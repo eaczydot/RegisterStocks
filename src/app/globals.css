@@ -2,6 +2,17 @@
 
 :root {
   color-scheme: dark;
+  
+  /* Color tokens */
+  --color-bg-primary: #020202;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-card: #111111;
+  --color-accent: #7cccff;
+  --color-accent-hover: #a3e0ff;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0a0;
+  --color-text-tertiary: #6d6e71;
+  --color-border: rgba(255, 255, 255, 0.12);
 }
 
 html {
@@ -10,21 +21,36 @@ html {
 
 body {
   min-height: 100%;
-  background-color: #05070d;
+  background-color: var(--color-bg-primary);
   color: #e2e8f0;
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+@layer base {
+  /* Focus states for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  
+  /* Selection color */
+  ::selection {
+    background-color: rgba(124, 204, 255, 0.3);
+    color: #ffffff;
+  }
+}
+
 @layer utilities {
+  /* Grid background pattern */
   .grid-faint {
     background-image: linear-gradient(
         to right,
-        rgba(148, 163, 184, 0.08) 1px,
+        rgba(148, 163, 184, 0.06) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        rgba(148, 163, 184, 0.08) 1px,
+        rgba(148, 163, 184, 0.06) 1px,
         transparent 1px
       );
     background-size: 64px 64px;
@@ -32,5 +58,59 @@ body {
 
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Label style - Galaxy inspired */
+  .text-label-upper {
+    font-size: 14px;
+    line-height: 1.429;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  /* Smooth transitions */
+  .transition-base {
+    transition: all 0.2s ease-out;
+  }
+  
+  /* Hover lift effect */
+  .hover-lift {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Border glow on hover */
+  .hover-glow {
+    transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+  .hover-glow:hover {
+    border-color: rgba(124, 204, 255, 0.4);
+    box-shadow: 0 0 20px rgba(124, 204, 255, 0.1);
+  }
+  
+  /* Container utility */
+  .container-main {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  
+  /* 12-column grid */
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 3rem;
+  }
+  
+  /* Section divider */
+  .section-divider {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }

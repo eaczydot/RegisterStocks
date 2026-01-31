@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from "react";
 
+// Galaxy-inspired pill button styles
 const primaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-full bg-ice-blue px-6 py-3 text-sm font-semibold text-slate-950 shadow-glow transition hover:bg-[#a3dfff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice-blue/70";
+  "inline-flex items-center justify-center gap-2 rounded-full bg-ice-blue px-8 py-3.5 text-[16px] font-medium text-[#020202] transition-all hover:bg-ice-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice-blue/50";
 const secondaryButton =
-  "inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice-blue/60";
+  "inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-8 py-3.5 text-[16px] font-medium text-white transition-all hover:border-white/40 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ice-blue/50";
+const ghostButton =
+  "inline-flex items-center gap-2 text-[16px] text-white underline hover:text-ice-blue transition-colors";
 
 const valuePoints = [
   {
@@ -105,211 +108,228 @@ export default function Home() {
 
   return (
     <div className="bg-night-sky text-slate-100">
-      <header className="relative overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(124,204,255,0.18),transparent_55%)]" />
-        <div className="absolute inset-0 grid-faint opacity-40" />
-        <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
+      {/* Enhanced Header - Galaxy inspired */}
+      <header className="bg-night-sky sticky top-0 z-50 min-h-20 border-b border-white/5">
+        <div className="max-w-container mx-auto px-12 py-6 flex items-center justify-between">
+          {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5">
+            <div className="w-10 h-10 rounded-subtle bg-white/5 border border-white/15 flex items-center justify-center">
               <span className="text-lg font-semibold text-ice-blue">RS</span>
             </div>
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-                RegisterStocks
-              </p>
-              <p className="text-xs text-slate-500">
-                Registry + Vault + Liquidity
-              </p>
+              <p className="text-[16px] font-medium text-white">RegisterStocks</p>
+              <p className="text-[12px] text-text-tertiary">Registry + Vault + Liquidity</p>
             </div>
           </div>
-          <nav className="hidden items-center gap-8 text-sm text-slate-300 md:flex">
-            <a className="hover:text-white" href="#why">
+          
+          {/* Navigation - cleaner spacing */}
+          <nav className="hidden md:flex items-center gap-12">
+            <a className="text-[16px] text-slate-300 hover:text-white transition-colors" href="#why">
               Why
             </a>
-            <a className="hover:text-white" href="#features">
+            <a className="text-[16px] text-slate-300 hover:text-white transition-colors" href="#features">
               Features
             </a>
-            <a className="hover:text-white" href="#preview">
-              Limited Preview
+            <a className="text-[16px] text-slate-300 hover:text-white transition-colors" href="#preview">
+              Preview
             </a>
-            <a className="hover:text-white" href="#contact">
+            <a className="text-[16px] text-slate-300 hover:text-white transition-colors" href="#contact">
               Contact
             </a>
           </nav>
-          <div className="flex items-center gap-3">
+          
+          {/* Actions */}
+          <div className="flex items-center gap-4">
             <button
-              className="hidden rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-white/30 hover:text-white md:inline-flex"
+              className="hidden md:block text-[16px] text-slate-300 hover:text-white transition-colors"
               onClick={() => setIsGateOpen(true)}
             >
               Log In
             </button>
             <button className={primaryButton} onClick={() => setIsGateOpen(true)}>
               Request Access
-              <ArrowIcon className="h-4 w-4" />
             </button>
           </div>
         </div>
       </header>
 
       <main>
-        <section className="relative overflow-hidden pb-24 pt-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,_rgba(15,23,42,0.6),transparent_50%)]" />
-          <div className="relative mx-auto w-full max-w-6xl px-6">
-            <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ice-blue/80">
-                Private Markets Infrastructure
-              </p>
-              <h1 className="mt-5 text-balance font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Registry for Equity and Private Holdings.
-              </h1>
-              <p className="mt-6 text-lg text-slate-300">
-                Capital Efficiency Through Information. The infrastructure built
-                for private markets to verify data provenance, structure
-                registries, and prepare for liquidity.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <button
-                  className={primaryButton}
-                  onClick={() => setIsGateOpen(true)}
-                >
-                  Secure Your Holdings
-                </button>
-                <a className={secondaryButton} href="#features">
-                  How it Works
-                </a>
-              </div>
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {[
-                  {
-                    title: "Private Beta",
-                    description: "Select partners only",
-                  },
-                  {
-                    title: "SEC-Aware",
-                    description: "Audit-ready provenance",
-                  },
-                  {
-                    title: "Liquidity-Ready",
-                    description: "Compliant transfers",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-2xl border border-white/10 bg-white/5 p-4"
-                  >
-                    <p className="text-sm font-semibold text-white">
-                      {item.title}
-                    </p>
-                    <p className="mt-1 text-xs text-slate-400">
-                      {item.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="why" className="border-t border-white/5 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* Hero Section - Galaxy-inspired two-column layout */}
+        <section className="bg-night-sky overflow-hidden py-24 lg:py-32">
+          <div className="max-w-container mx-auto px-12">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              {/* Left: Content */}
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                  The Why
+                <p className="text-[14px] tracking-[0.1em] uppercase text-ice-blue/80 mb-6">
+                  Private Markets Infrastructure
                 </p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
-                  Private markets rely on speculation and fragmented data.
-                </h2>
-                <p className="mt-5 text-base text-slate-300">
-                  We started RegisterStocks Registry with a simple goal: create
-                  a platform that helps investors, funds, and companies verify
-                  ownership, structure registries, and prepare for liquidity.
-                  The future of private markets depends on better information
-                  and structured registries, not more speculation.
+                <h1 className="text-display-lg lg:text-display-xl font-medium text-white mb-8">
+                  Registry for Equity and Private Holdings.
+                </h1>
+                <p className="text-body-lg text-slate-300 leading-relaxed mb-10 max-w-xl">
+                  Capital Efficiency Through Information. The infrastructure built
+                  for private markets to verify data provenance, structure
+                  registries, and prepare for liquidity.
                 </p>
-                <p className="mt-4 text-base text-slate-300">
-                  By digitizing equity through SAFE notes and convertible debt,
-                  RegisterStocks lets capital move more intelligently, much like
-                  a stock exchange facilitates the trading of shares.
-                </p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-deep-space/70 p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                  The Solution
-                </p>
-                <h3 className="mt-4 text-2xl font-semibold text-white">
-                  Capital moves intelligently when equity is digitized.
-                </h3>
-                <div className="mt-6 grid gap-5">
-                  {valuePoints.map((point) => (
-                    <div key={point.title} className="flex gap-4">
-                      <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-ice-blue">
-                        <point.icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-white">
-                          {point.title}
-                        </p>
-                        <p className="mt-1 text-sm text-slate-400">
-                          {point.description}
-                        </p>
-                      </div>
+                <div className="flex flex-wrap gap-4 mb-12">
+                  <button
+                    className={primaryButton}
+                    onClick={() => setIsGateOpen(true)}
+                  >
+                    Secure Your Holdings
+                  </button>
+                  <a className={secondaryButton} href="#features">
+                    How it Works
+                  </a>
+                </div>
+                
+                {/* Stats row */}
+                <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+                  {[
+                    { title: "Private Beta", description: "Select partners only" },
+                    { title: "SEC-Aware", description: "Audit-ready provenance" },
+                    { title: "Liquidity-Ready", description: "Compliant transfers" },
+                  ].map((item) => (
+                    <div key={item.title}>
+                      <p className="text-[16px] font-medium text-white">{item.title}</p>
+                      <p className="text-[14px] text-text-tertiary mt-1">{item.description}</p>
                     </div>
                   ))}
                 </div>
-                <button
-                  className={`${secondaryButton} mt-8 w-full justify-center`}
-                  onClick={() => setIsGateOpen(true)}
-                >
-                  Explore the Registry
-                </button>
+              </div>
+              
+              {/* Right: Abstract visual element */}
+              <div className="relative hidden lg:flex justify-end">
+                <div className="relative w-[480px] h-[480px]">
+                  {/* Abstract geometric background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-ice-blue/10 via-transparent to-ice-blue/5 rounded-full blur-3xl" />
+                  <div className="absolute inset-8 border border-white/10 rounded-full" />
+                  <div className="absolute inset-16 border border-white/5 rounded-full" />
+                  <div className="absolute inset-24 bg-card-bg/50 border border-white/10 rounded-full flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-16 h-16 mx-auto rounded-subtle bg-white/5 border border-white/15 flex items-center justify-center mb-4">
+                        <ShieldIcon className="w-8 h-8 text-ice-blue" />
+                      </div>
+                      <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary">Verified</p>
+                      <p className="text-[20px] font-medium text-white">Registry</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="features" className="border-t border-white/5 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        {/* Value Proposition Section - Galaxy-inspired 12-column grid */}
+        <section id="why" className="py-32 bg-deep-space">
+          <div className="max-w-container mx-auto px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+              {/* Left column: Problem statement */}
+              <div className="lg:col-span-5">
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-2">
+                  The Problem
+                </p>
+                <h2 className="text-display-lg font-medium text-white mb-6">
+                  Private markets rely on speculation.
+                </h2>
+                <p className="text-body-md text-slate-300 mb-4">
+                  We started RegisterStocks Registry with a simple goal: create
+                  a platform that helps investors, funds, and companies verify
+                  ownership, structure registries, and prepare for liquidity.
+                </p>
+                <p className="text-body-md text-slate-300">
+                  The future of private markets depends on better information
+                  and structured registries, not more speculation. By digitizing equity,
+                  RegisterStocks lets capital move more intelligently.
+                </p>
+              </div>
+              
+              {/* Right column: Solution */}
+              <div className="lg:col-start-7 lg:col-span-6">
+                <div className="rounded-subtle border border-white/10 bg-card-bg p-8">
+                  <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-2">
+                    The Solution
+                  </p>
+                  <h3 className="text-[24px] font-medium text-white mb-8">
+                    Capital moves intelligently when equity is digitized.
+                  </h3>
+                  <div className="space-y-6">
+                    {valuePoints.map((point) => (
+                      <div key={point.title} className="flex gap-4">
+                        <div className="w-14 h-14 rounded-subtle bg-white/5 border border-white/10 flex items-center justify-center text-ice-blue shrink-0">
+                          <point.icon className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <p className="text-[18px] font-medium text-white mb-1">
+                            {point.title}
+                          </p>
+                          <p className="text-[15px] text-slate-400 leading-relaxed">
+                            {point.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    className={`${secondaryButton} mt-8 w-full justify-center`}
+                    onClick={() => setIsGateOpen(true)}
+                  >
+                    Explore the Registry
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Feature Grid Section - Galaxy-inspired with section header */}
+        <section id="features" className="py-32 bg-night-sky">
+          <div className="max-w-container mx-auto px-12">
+            {/* Section header with divider */}
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 pb-6 border-b border-white/10">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-2">
                   The What
                 </p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
-                  The Registry + Vault + Liquidity stack.
+                <h2 className="text-[20px] font-normal text-white">
+                  The Registry + Vault + Liquidity stack
                 </h2>
-                <p className="mt-4 max-w-2xl text-base text-slate-300">
-                  RegisterStocks delivers the core systems private markets have
-                  lacked: verified document custody, provenance, structured
-                  registries, and liquidity readiness, all without compromising
-                  compliance or control.
-                </p>
               </div>
               <button className={secondaryButton} onClick={() => setIsGateOpen(true)}>
                 View Demo Dashboard
               </button>
             </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
+            {/* Description */}
+            <p className="text-body-md text-slate-300 max-w-3xl mb-12">
+              RegisterStocks delivers the core systems private markets have
+              lacked: verified document custody, provenance, structured
+              registries, and liquidity readiness, all without compromising
+              compliance or control.
+            </p>
+            
+            {/* Feature cards grid */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featureGrid.map((feature) => (
                 <div
                   key={feature.title}
-                  className="group rounded-3xl border border-white/10 bg-deep-space/70 p-6 transition hover:border-ice-blue/40 hover:shadow-glow"
+                  className="group rounded-subtle border border-white/10 bg-card-bg p-8 transition-all hover:border-ice-blue/30 hover-glow"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-ice-blue">
-                    <feature.icon className="h-6 w-6" />
+                  <div className="w-14 h-14 rounded-subtle bg-white/5 border border-white/10 flex items-center justify-center text-ice-blue mb-6">
+                    <feature.icon className="w-7 h-7" />
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold text-white">
+                  <h3 className="text-[20px] font-medium text-white mb-3">
                     {feature.title}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-400">
+                  <p className="text-[16px] text-slate-400 leading-relaxed mb-6">
                     {feature.description}
                   </p>
                   <button
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ice-blue"
+                    className="inline-flex items-center gap-2 text-[14px] text-ice-blue hover:underline transition-colors"
                     onClick={() => setIsGateOpen(true)}
                   >
                     Learn more
-                    <ArrowIcon className="h-4 w-4" />
+                    <ArrowIcon className="w-4 h-4" />
                   </button>
                 </div>
               ))}
@@ -317,37 +337,41 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-t border-white/5 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="rounded-3xl border border-white/10 bg-deep-space/70 p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+        {/* Compliance & Infrastructure Section */}
+        <section className="py-32 bg-deep-space">
+          <div className="max-w-container mx-auto px-12">
+            <div className="grid gap-8 lg:grid-cols-2">
+              {/* Left card: Compliance */}
+              <div className="rounded-subtle border border-white/10 bg-card-bg p-10">
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-3">
                   Regulatory & Institutional Alignment
                 </p>
-                <h2 className="mt-4 text-2xl font-semibold text-white">
+                <h2 className="text-[28px] font-medium text-white mb-6">
                   Designed for compliance and longevity.
                 </h2>
-                <p className="mt-4 text-base text-slate-300">
+                <p className="text-body-md text-slate-300 mb-4">
                   RegisterStocks supports SEC-aware provenance, auditability,
                   and KYC/AML integration pathways. The architecture is built to
                   complement transfer-agent and fund-administration frameworks,
                   with optional custodial partnerships for professional
                   operations.
                 </p>
-                <p className="mt-4 text-base text-slate-300">
+                <p className="text-body-md text-slate-300">
                   The platform is engineered to grow with regulation in fintech,
                   not around it, ensuring your registry stays durable as private
                   markets evolve.
                 </p>
               </div>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+              
+              {/* Right card: Infrastructure benefits */}
+              <div className="rounded-subtle border border-white/10 bg-white/[0.03] p-10">
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-3">
                   Infrastructure Built for Private Markets
                 </p>
-                <h2 className="mt-4 text-2xl font-semibold text-white">
+                <h2 className="text-[28px] font-medium text-white mb-8">
                   Reduce friction, lower risk, increase capital efficiency.
                 </h2>
-                <div className="mt-6 grid gap-5">
+                <div className="space-y-4">
                   {[
                     "Cryptographic verification of documents and versions.",
                     "Eliminates uncertainty around rights, amendments, and validity.",
@@ -356,10 +380,10 @@ export default function Home() {
                   ].map((item) => (
                     <div
                       key={item}
-                      className="flex items-start gap-3 rounded-2xl border border-white/10 bg-deep-space/70 p-4"
+                      className="flex items-start gap-4 rounded-subtle border border-white/10 bg-card-bg p-5"
                     >
-                      <CheckIcon className="mt-1 h-4 w-4 text-ice-blue" />
-                      <p className="text-sm text-slate-300">{item}</p>
+                      <CheckIcon className="w-5 h-5 text-ice-blue shrink-0 mt-0.5" />
+                      <p className="text-[16px] text-slate-300">{item}</p>
                     </div>
                   ))}
                 </div>
@@ -368,55 +392,68 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-t border-white/5 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        {/* Registry Standards Section - Galaxy-inspired list style */}
+        <section className="py-32 bg-night-sky">
+          <div className="max-w-container mx-auto px-12">
+            {/* Section header */}
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 pb-6 border-b border-white/10">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
-                  Structured Registry Standardized Assets
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-2">
+                  Registry Standards
                 </p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
-                  Registry standards built for professionals.
+                <h2 className="text-display-lg font-medium text-white">
+                  Built for professionals.
                 </h2>
               </div>
               <button className={secondaryButton} onClick={() => setIsGateOpen(true)}>
                 Request Registry Access
               </button>
             </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              {registryStandards.map((item) => (
-                <div
+            
+            {/* Standards list - Galaxy-inspired expandable style */}
+            <ul className="divide-y divide-white/10">
+              {registryStandards.map((item, index) => (
+                <li
                   key={item.title}
-                  className="rounded-3xl border border-white/10 bg-deep-space/70 p-6"
+                  className="py-8 group cursor-pointer hover:bg-white/[0.02] -mx-6 px-6 transition-colors"
+                  onClick={() => setIsGateOpen(true)}
                 >
-                  <h3 className="text-base font-semibold text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-400">
-                    {item.description}
-                  </p>
-                </div>
+                  <div className="flex justify-between items-start gap-8">
+                    <div className="flex-1">
+                      <h3 className="text-[20px] font-medium text-white mb-2 group-hover:text-ice-blue transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-[16px] text-slate-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="text-slate-500 group-hover:text-ice-blue transition-colors shrink-0">
+                      <ArrowIcon className="w-5 h-5 -rotate-45" />
+                    </div>
+                  </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
-        <section id="preview" className="border-t border-white/5 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        {/* Preview Section - Enhanced */}
+        <section id="preview" className="py-32 bg-deep-space">
+          <div className="max-w-container mx-auto px-12">
+            <div className="grid gap-12 lg:grid-cols-2 items-center">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-3">
                   Limited Preview
                 </p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+                <h2 className="text-display-lg font-medium text-white mb-6">
                   Demo mode for select partners.
                 </h2>
-                <p className="mt-4 text-base text-slate-300">
+                <p className="text-body-md text-slate-300 mb-8">
                   RegisterStocks is currently in Private Beta. The application
                   is running with live registry workflows, but access is gated
                   for vetted partners only.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4">
                   <button
                     className={primaryButton}
                     onClick={() => setIsGateOpen(true)}
@@ -434,11 +471,11 @@ export default function Home() {
               <div className="relative">
                 <PreviewShell blurred />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="rounded-2xl border border-white/20 bg-[#0b1220]/90 px-6 py-4 text-center shadow-2xl backdrop-blur">
-                    <p className="text-sm font-semibold text-white">
+                  <div className="rounded-subtle border border-white/20 bg-night-sky/90 px-8 py-6 text-center shadow-2xl backdrop-blur">
+                    <p className="text-[16px] font-medium text-white">
                       Private Beta
                     </p>
-                    <p className="mt-1 text-xs text-slate-400">
+                    <p className="mt-2 text-[14px] text-text-tertiary">
                       Request access to unlock the full demo.
                     </p>
                   </div>
@@ -448,92 +485,143 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="border-t border-white/5 py-20">
-          <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+        {/* Contact Section - Enhanced */}
+        <section id="contact" className="py-32 bg-night-sky">
+          <div className="max-w-container mx-auto px-12">
+            <div className="grid gap-12 lg:grid-cols-12">
+              {/* Left column */}
+              <div className="lg:col-span-5">
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-3">
                   Contact Us
                 </p>
-                <h2 className="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl">
+                <h2 className="text-display-lg font-medium text-white mb-6">
                   Drop us a line.
                 </h2>
-                <p className="mt-4 text-base text-slate-300">
+                <p className="text-body-md text-slate-300 mb-8">
                   Schedule a full demo, secure your registry, and sign up for
                   updates. We will follow up within 48 hours.
                 </p>
-                <div className="mt-6 rounded-3xl border border-white/10 bg-deep-space/70 p-6">
-                  <h3 className="text-sm font-semibold text-white">
+                <div className="rounded-subtle border border-white/10 bg-card-bg p-8">
+                  <h3 className="text-[16px] font-medium text-white mb-3">
                     Direct Line
                   </h3>
-                  <p className="mt-2 text-sm text-slate-400">
+                  <p className="text-[18px] text-ice-blue mb-4">
                     contact@registerstocks.com
                   </p>
-                  <p className="mt-4 text-xs text-slate-500">
+                  <p className="text-[14px] text-text-tertiary">
                     Private markets deserve better information.
                   </p>
                 </div>
               </div>
-              <form
-                className="rounded-3xl border border-white/10 bg-white/5 p-8"
-                onSubmit={(event) => event.preventDefault()}
-              >
-                <div className="grid gap-5">
-                  <div>
-                    <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                      Name
-                    </label>
-                    <input
-                      className="mt-2 w-full rounded-2xl border border-white/10 bg-deep-space/70 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-ice-blue/60 focus:outline-none"
-                      placeholder="Jane Founder"
-                      type="text"
-                    />
+              
+              {/* Right column - Form */}
+              <div className="lg:col-start-7 lg:col-span-6">
+                <form
+                  className="rounded-subtle border border-white/10 bg-white/[0.03] p-10"
+                  onSubmit={(event) => event.preventDefault()}
+                >
+                  <div className="space-y-6">
+                    <div>
+                      <label className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary block mb-3">
+                        Name
+                      </label>
+                      <input
+                        className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-[18px] text-white placeholder:text-slate-500 focus:border-ice-blue focus:outline-none transition-colors"
+                        placeholder="Jane Founder"
+                        type="text"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary block mb-3">
+                        Email
+                      </label>
+                      <input
+                        className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-[18px] text-white placeholder:text-slate-500 focus:border-ice-blue focus:outline-none transition-colors"
+                        placeholder="jane@firm.com"
+                        type="email"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary block mb-3">
+                        Organization Type
+                      </label>
+                      <select className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-[18px] text-white focus:border-ice-blue focus:outline-none transition-colors cursor-pointer">
+                        <option className="bg-night-sky">Investor</option>
+                        <option className="bg-night-sky">Fund</option>
+                        <option className="bg-night-sky">Company</option>
+                      </select>
+                    </div>
+                    <div className="pt-4">
+                      <button className={`${primaryButton} w-full justify-center`} type="submit">
+                        Request Access
+                      </button>
+                    </div>
                   </div>
-                  <div>
-                    <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                      Email
-                    </label>
-                    <input
-                      className="mt-2 w-full rounded-2xl border border-white/10 bg-deep-space/70 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-ice-blue/60 focus:outline-none"
-                      placeholder="jane@firm.com"
-                      type="email"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                      Organization Type
-                    </label>
-                    <select className="mt-2 w-full rounded-2xl border border-white/10 bg-deep-space/70 px-4 py-3 text-sm text-white focus:border-ice-blue/60 focus:outline-none">
-                      <option>Investor</option>
-                      <option>Fund</option>
-                      <option>Company</option>
-                    </select>
-                  </div>
-                  <button className={primaryButton} type="submit">
-                    Request Access
-                  </button>
-                </div>
-                <p className="mt-4 text-xs text-slate-500">
-                  Sign up for our email list for updates, promotions, and more.
-                </p>
-              </form>
+                  <p className="mt-6 text-[14px] text-text-tertiary text-center">
+                    Sign up for our email list for updates and more.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-white/5 py-10">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-6 px-6 md:flex-row md:items-center">
-          <div>
-            <p className="text-sm font-semibold text-white">RegisterStocks</p>
-            <p className="mt-1 text-xs text-slate-500">
-              Registry infrastructure for private markets.
-            </p>
+      {/* Footer - Galaxy-inspired grid layout */}
+      <footer className="bg-night-sky py-24 border-t border-white/5">
+        <div className="max-w-container mx-auto px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Brand */}
+            <div className="lg:col-span-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-subtle bg-white/5 border border-white/15 flex items-center justify-center">
+                  <span className="text-lg font-semibold text-ice-blue">RS</span>
+                </div>
+                <p className="text-[20px] font-medium text-white">RegisterStocks</p>
+              </div>
+              <p className="text-[14px] text-text-tertiary max-w-xs leading-relaxed">
+                Registry infrastructure for private markets. Capital efficiency through information.
+              </p>
+            </div>
+            
+            {/* Links */}
+            <div className="lg:col-start-7 lg:col-span-6 grid grid-cols-3 gap-8">
+              <div>
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-4">
+                  Platform
+                </p>
+                <ul className="space-y-3">
+                  <li><button onClick={() => setIsGateOpen(true)} className="text-[16px] text-slate-300 hover:text-white transition-colors">Dashboard</button></li>
+                  <li><button onClick={() => setIsGateOpen(true)} className="text-[16px] text-slate-300 hover:text-white transition-colors">Registry</button></li>
+                  <li><button onClick={() => setIsGateOpen(true)} className="text-[16px] text-slate-300 hover:text-white transition-colors">Vault</button></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-4">
+                  Company
+                </p>
+                <ul className="space-y-3">
+                  <li><a href="#why" className="text-[16px] text-slate-300 hover:text-white transition-colors">About</a></li>
+                  <li><a href="#contact" className="text-[16px] text-slate-300 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-[14px] tracking-[0.1em] uppercase text-text-tertiary mb-4">
+                  Legal
+                </p>
+                <ul className="space-y-3">
+                  <li><button onClick={() => setIsGateOpen(true)} className="text-[16px] text-slate-300 hover:text-white transition-colors">Privacy</button></li>
+                  <li><button onClick={() => setIsGateOpen(true)} className="text-[16px] text-slate-300 hover:text-white transition-colors">Terms</button></li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-4 text-xs text-slate-500">
-            <button onClick={() => setIsGateOpen(true)}>Log In</button>
-            <button onClick={() => setIsGateOpen(true)}>Dashboard</button>
-            <button onClick={() => setIsGateOpen(true)}>Search Registry</button>
+          
+          {/* Copyright */}
+          <div className="mt-16 pt-8 border-t border-white/10">
+            <p className="text-[14px] text-text-tertiary">
+              © {new Date().getFullYear()} RegisterStocks. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
@@ -553,23 +641,23 @@ function DemoGate({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#05070d]/85 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 bg-night-sky/90 backdrop-blur-sm">
       <div className="absolute inset-0 overflow-y-auto px-6 py-12">
         <div className="mx-auto flex min-h-[80vh] w-full max-w-5xl items-center justify-center">
           <div className="relative w-full">
-            <PreviewShell blurred className="rounded-3xl" />
+            <PreviewShell blurred className="rounded-subtle" />
             <div className="absolute inset-0 flex items-center justify-center p-6">
               <div
                 role="dialog"
                 aria-modal="true"
-                className="w-full max-w-md rounded-3xl border border-white/20 bg-[#0b1220]/90 p-6 shadow-2xl backdrop-blur"
+                className="w-full max-w-md rounded-subtle border border-white/20 bg-night-sky/95 p-8 shadow-2xl backdrop-blur"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-ice-blue/80">
+                    <p className="text-[14px] tracking-[0.1em] uppercase text-ice-blue/80 mb-3">
                       Limited Preview
                     </p>
-                    <h3 className="mt-3 text-xl font-semibold text-white">
+                    <h3 className="text-[24px] font-medium text-white">
                       RegisterStocks is currently in Private Beta for select
                       partners.
                     </h3>
@@ -579,36 +667,38 @@ function DemoGate({
                     onClick={onClose}
                     aria-label="Close modal"
                   >
-                    <CloseIcon className="h-4 w-4" />
+                    <CloseIcon className="w-5 h-5" />
                   </button>
                 </div>
-                <p className="mt-4 text-sm text-slate-300">
+                <p className="mt-4 text-[16px] text-slate-300">
                   Contact us to schedule a full demo and secure your registry.
                 </p>
                 <form
-                  className="mt-6 grid gap-4"
+                  className="mt-8 space-y-5"
                   onSubmit={(event) => event.preventDefault()}
                 >
                   <input
-                    className="w-full rounded-2xl border border-white/10 bg-deep-space/70 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-ice-blue/60 focus:outline-none"
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-[16px] text-white placeholder:text-slate-500 focus:border-ice-blue focus:outline-none transition-colors"
                     placeholder="Name"
                     type="text"
                   />
                   <input
-                    className="w-full rounded-2xl border border-white/10 bg-deep-space/70 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:border-ice-blue/60 focus:outline-none"
+                    className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-[16px] text-white placeholder:text-slate-500 focus:border-ice-blue focus:outline-none transition-colors"
                     placeholder="Email"
                     type="email"
                   />
-                  <select className="w-full rounded-2xl border border-white/10 bg-deep-space/70 px-4 py-3 text-sm text-white focus:border-ice-blue/60 focus:outline-none">
-                    <option>Investor</option>
-                    <option>Fund</option>
-                    <option>Company</option>
+                  <select className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-[16px] text-white focus:border-ice-blue focus:outline-none transition-colors cursor-pointer">
+                    <option className="bg-night-sky">Investor</option>
+                    <option className="bg-night-sky">Fund</option>
+                    <option className="bg-night-sky">Company</option>
                   </select>
-                  <button className={primaryButton} type="submit">
-                    Request Access
-                  </button>
+                  <div className="pt-4">
+                    <button className={`${primaryButton} w-full justify-center`} type="submit">
+                      Request Access
+                    </button>
+                  </div>
                 </form>
-                <p className="mt-4 text-xs text-slate-500">
+                <p className="mt-6 text-[14px] text-text-tertiary text-center">
                   We respond within 48 hours for qualified partners.
                 </p>
               </div>
@@ -629,7 +719,7 @@ function PreviewShell({
 }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-deep-space/70 p-6 shadow-2xl ${className}`}
+      className={`relative overflow-hidden rounded-subtle border border-white/10 bg-card-bg p-6 shadow-2xl ${className}`}
     >
       <div
         className={`space-y-6 ${blurred ? "blur-xl opacity-70" : ""}`}
@@ -637,7 +727,7 @@ function PreviewShell({
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl border border-white/10 bg-white/5" />
+            <div className="h-10 w-10 rounded-subtle border border-white/10 bg-white/5" />
             <div>
               <div className="h-3 w-28 rounded-full bg-white/10" />
               <div className="mt-2 h-2 w-20 rounded-full bg-white/5" />
@@ -649,25 +739,25 @@ function PreviewShell({
           </div>
         </div>
         <div className="grid gap-4 lg:grid-cols-[0.35fr_0.65fr]">
-          <div className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="space-y-3 rounded-subtle border border-white/10 bg-white/5 p-4">
             {["Dashboard", "Registries", "Vault", "Liquidity", "Compliance"].map(
               (item) => (
                 <div
                   key={item}
-                  className="flex items-center justify-between rounded-xl bg-white/5 px-3 py-2"
+                  className="flex items-center justify-between rounded-subtle bg-white/5 px-3 py-2"
                 >
-                  <span className="text-xs text-slate-300">{item}</span>
+                  <span className="text-[12px] text-slate-300">{item}</span>
                   <div className="h-2 w-6 rounded-full bg-white/10" />
                 </div>
               )
             )}
           </div>
           <div className="space-y-4">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="rounded-subtle border border-white/10 bg-white/5 p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400">Registry Overview</p>
-                  <p className="mt-2 text-lg font-semibold text-white">
+                  <p className="text-[12px] text-slate-400">Registry Overview</p>
+                  <p className="mt-2 text-[20px] font-medium text-white">
                     $4.2B Verified Holdings
                   </p>
                 </div>
@@ -677,9 +767,9 @@ function PreviewShell({
                 {["Active", "Pending", "Audit Ready"].map((label) => (
                   <div
                     key={label}
-                    className="rounded-xl border border-white/10 bg-deep-space/70 px-3 py-2"
+                    className="rounded-subtle border border-white/10 bg-night-sky/70 px-3 py-2"
                   >
-                    <p className="text-xs text-slate-400">{label}</p>
+                    <p className="text-[12px] text-slate-400">{label}</p>
                     <div className="mt-2 h-2 w-16 rounded-full bg-ice-blue/60" />
                   </div>
                 ))}
@@ -689,16 +779,16 @@ function PreviewShell({
               {["Vault Activity", "Liquidity Readiness"].map((title) => (
                 <div
                   key={title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                  className="rounded-subtle border border-white/10 bg-white/5 p-4"
                 >
-                  <p className="text-xs text-slate-400">{title}</p>
-                  <div className="mt-3 h-20 rounded-xl border border-dashed border-white/10 bg-deep-space/70" />
+                  <p className="text-[12px] text-slate-400">{title}</p>
+                  <div className="mt-3 h-20 rounded-subtle border border-dashed border-white/10 bg-night-sky/70" />
                 </div>
               ))}
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="text-xs text-slate-400">Registry Search</p>
-              <div className="mt-3 h-10 rounded-full border border-white/10 bg-deep-space/70" />
+            <div className="rounded-subtle border border-white/10 bg-white/5 p-4">
+              <p className="text-[12px] text-slate-400">Registry Search</p>
+              <div className="mt-3 h-10 rounded-full border border-white/10 bg-night-sky/70" />
             </div>
           </div>
         </div>
