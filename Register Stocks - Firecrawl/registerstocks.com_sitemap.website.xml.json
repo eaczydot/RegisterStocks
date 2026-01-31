@@ -1,0 +1,18 @@
+{
+  "markdown": "https://registerstocks.com/2026-01-03weekly1",
+  "metadata": {
+    "scrapeId": "019bfb42-bd12-745c-866c-552193e47849",
+    "sourceURL": "https://registerstocks.com/sitemap.website.xml",
+    "url": "https://registerstocks.com/sitemap.website.xml",
+    "statusCode": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "proxyUsed": "basic",
+    "cacheState": "hit",
+    "cachedAt": "2026-01-26T16:58:44.240Z",
+    "creditsUsed": 5
+  },
+  "json": {
+    "company_name": "",
+    "company_description": ""
+  }
+}

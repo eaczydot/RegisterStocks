@@ -1,0 +1,18 @@
+{
+  "markdown": "https://registerstocks.com/sitemap.website.xmlhttps://registerstocks.com/sitemap.blog.xmlhttps://registerstocks.com/sitemap.ols.xml",
+  "metadata": {
+    "scrapeId": "019bfb42-bd12-745c-866c-525352c75fe0",
+    "sourceURL": "https://registerstocks.com/sitemap.xml",
+    "url": "https://registerstocks.com/sitemap.xml",
+    "statusCode": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "proxyUsed": "basic",
+    "cacheState": "hit",
+    "cachedAt": "2026-01-26T16:58:44.240Z",
+    "creditsUsed": 5
+  },
+  "json": {
+    "company_name": "Register Stocks",
+    "company_description": "A platform providing stock market insights and information for various stocks, encompassing sitemaps for websites, blogs, and online listings."
+  }
+}

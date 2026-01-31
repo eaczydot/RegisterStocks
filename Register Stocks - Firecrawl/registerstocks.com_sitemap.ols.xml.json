@@ -1,0 +1,18 @@
+{
+  "markdown": "https://ae19186c-3846-44aa-bc5b-5bead0dcf479.mysimplestore.com2026-01-26T16:49:12+00:00always1.0",
+  "metadata": {
+    "scrapeId": "019bfb42-bd12-745c-866c-3dd143ed7df8",
+    "sourceURL": "https://registerstocks.com/sitemap.ols.xml",
+    "url": "https://registerstocks.com/sitemap.ols.xml",
+    "statusCode": 200,
+    "contentType": "application/xml; charset=utf-8",
+    "proxyUsed": "basic",
+    "cacheState": "hit",
+    "cachedAt": "2026-01-26T16:58:45.149Z",
+    "creditsUsed": 5
+  },
+  "json": {
+    "company_name": "mySimplestore",
+    "company_description": "A platform for businesses to create and manage their online store with ease."
+  }
+}
