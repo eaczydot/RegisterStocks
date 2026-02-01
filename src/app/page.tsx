@@ -135,6 +135,9 @@ export default function Home() {
             <a className="hover:text-white" href="#contact">
               Contact
             </a>
+            <a className="hover:text-white text-purple-400" href="/galaxy">
+              Galaxy App →
+            </a>
           </nav>
           <div className="flex items-center gap-3">
             <button
@@ -534,6 +537,7 @@ export default function Home() {
             <button onClick={() => setIsGateOpen(true)}>Log In</button>
             <button onClick={() => setIsGateOpen(true)}>Dashboard</button>
             <button onClick={() => setIsGateOpen(true)}>Search Registry</button>
+            <a href="/galaxy" className="text-purple-400 hover:text-purple-300">Galaxy App</a>
           </div>
         </div>
       </footer>
