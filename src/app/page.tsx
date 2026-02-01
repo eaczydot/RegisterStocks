@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const primaryButton =
@@ -135,6 +136,9 @@ export default function Home() {
             <a className="hover:text-white" href="#contact">
               Contact
             </a>
+            <Link className="hover:text-white" href="/galaxy">
+              Galaxy Sub-App
+            </Link>
           </nav>
           <div className="flex items-center gap-3">
             <button
@@ -177,6 +181,9 @@ export default function Home() {
                 <a className={secondaryButton} href="#features">
                   How it Works
                 </a>
+                <Link className={secondaryButton} href="/galaxy">
+                  Galaxy Sub-App
+                </Link>
               </div>
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {[
@@ -534,6 +541,7 @@ export default function Home() {
             <button onClick={() => setIsGateOpen(true)}>Log In</button>
             <button onClick={() => setIsGateOpen(true)}>Dashboard</button>
             <button onClick={() => setIsGateOpen(true)}>Search Registry</button>
+            <Link href="/galaxy">Galaxy Sub-App</Link>
           </div>
         </div>
       </footer>
